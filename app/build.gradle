@@ -37,3 +37,25 @@ application {
     // Define the main class for the application.
     mainClass = 'aprendendo.multithread.App'
 }
+
+/*
+* https://mkyong.com/gradle/gradle-create-a-jar-file-with-dependencies/
+*https://andresalmiray.com/customize-jar-manifest-entries-with-maven-gradle/
+* opções de build(testes)
+* para criar o pacote, primeiro limpe o projeto(opcional) com:
+* $ gradle clean
+* depois faça o build com todos as dependencia dentro: 
+* $ gradle makeJar
+*/
+task makeJar(type: Jar) {
+    manifest {
+        attributes(
+            'Implementation-Title': 'Gradle Jar File Example',  
+            'Implementation-Version': '1.0',
+            'Main-Class': 'aprendendo.multithread.App'
+        )
+    }
+    baseName = project.name + '-all'
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
+}
