@@ -1,11 +1,18 @@
 package aprendendo.multithread;
 
 import aprendendo.multithread.cenariomultithread.Volatile;
+import aprendendo.multithread.cordenandothreads.ContadorParaCordenarThreads;
+import aprendendo.multithread.trocadedadosentreduasthreads.TrocandoDadosEntreThreads;
+import aprendendo.multithread.usandoclassesdelock.UsandoReentrantLock;
 import aprendendo.multithread.usandocolecoessincronizadas.ClassesAtomicas;
 import aprendendo.multithread.usandocolecoessincronizadas.SincronizarColecoes;
+import aprendendo.multithread.usandocyclicbarrier.UsandoCyclicBarrier;
+import aprendendo.multithread.usandoexecutores.AgendamentoExecutorsScheduled;
 import aprendendo.multithread.usandoexecutores.ExecutoresSingleThreadCallable;
+import aprendendo.multithread.usandoexecutores.MultithreadUsandoExecutor;
 import aprendendo.multithread.usandorunnable.CriandoThreads;
 import aprendendo.multithread.usandorunnable.MeuRunnable;
+import aprendendo.multithread.usandosemaphore.UsandoSemaphore;
 import aprendendo.multithread.usandosyncronized.SynchronizedDaFormaCerta;
 import aprendendo.multithread.usandosyncronized.SynchronizedDaFormaErrada;
 
@@ -35,12 +42,31 @@ public class App {
       //usando volatile para ler e modificar dados na memoria ram
       Volatile.logica();
     
+      //forma alternativa e melhor que o Thread.
+      ExecutoresSingleThreadCallable.logica();
+      //froma de execultar multiplas threads
+      MultithreadUsandoExecutor.logica();
+
+      //forma de agendar tarefas
+      AgendamentoExecutorsScheduled.logica();
+
+      //forma de fazer uma thread esperar uma outra thread terminar uma tarefa...
+      UsandoCyclicBarrier.logica();
+
+      //identico ao CyclicBarrier, só que ele alterna as tarefas de uma forma que você decide quantas vezes uma thread pode executar.
+      ContadorParaCordenarThreads.logica();
+
+      //usando a classe Semaphore para limitar execuções de threads.
+      UsandoSemaphore.logica();
+   
+      //bloqueando recursos para threads executarem de corma sincronizada...
+      UsandoReentrantLock.logica();
     */
+    //Usando syncronousQueue e Exchanger para permitir troca de dados entre threas.
+    TrocandoDadosEntreThreads.logica();
 
-    ExecutoresSingleThreadCallable.logica();
-
-    //parei no https://www.youtube.com/watch?v=ljSCwqJmgr4&list=PLuYctAHjg89YNXAXhgUt6ogMyPphlTVQG&index=10
-	}
+    //parei em https://www.youtube.com/watch?v=Y7niN7cMdgY&list=PLuYctAHjg89YNXAXhgUt6ogMyPphlTVQG&index=17
+	} 
 
  
 }
